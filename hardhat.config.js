@@ -21,7 +21,7 @@ module.exports = {
   networks: {
     goerli: {
       url: "Your_QUICKNODE_API_URL",
-      accounts: ["YOUR_PRIVATE_GOERLI_ACCOUNT_KEY"]
+      accounts: ["YOUR_PRIVATE_GOERLI_ACCOUNT_KEY_HERE"]
     }
   }
 };
