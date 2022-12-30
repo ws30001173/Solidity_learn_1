@@ -18,4 +18,10 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
  */
 module.exports = {
   solidity: "0.8.17",
+  networks: {
+    goerli: {
+      url: "Your_QUICKNODE_API_URL",
+      accounts: ["YOUR_PRIVATE_GOERLI_ACCOUNT_KEY"]
+    }
+  }
 };
