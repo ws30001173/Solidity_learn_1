@@ -21,25 +21,27 @@
 // }
 
 const main = async () => {
-  const [owner, randomPerson] = await hre.ethers.getSigners();  // imitate others wave
   const waveContractFactory = await hre.ethers.getContractFactory("WavePortal"); // compile
   const waveContract = await waveContractFactory.deploy();
   await waveContract.deployed(); // deploy
 
-  console.log("Contract deployed to:", waveContract.address); // test address
-  console.log("Contract deployed by:", owner.address);
+  console.log("Contract deployed to:", waveContract.address); // contract address
 
-  await waveContract.getTotalWaves(); // start to test function
+  let waveCount;  // start to test function
+  waveCount = await waveContract.getTotalWaves();
+  console.log(waveCount.toNumber());
 
-  const waveTxn = await waveContract.wave();
+  // send waves~
+  const waveTxn = await waveContract.wave("A message!");
   await waveTxn.wait();
 
-  await waveContract.getTotalWaves();
+  const [_, randomPerson] = await hre.ethers.getSigners();
+  wavetxn = await waveContract.connect(randomPerson).wave("Another message!");
+  await waveTxn.wait();
 
-  await waveContract.connect(randomPerson).wave();
-
-  await waveContract.getTotalWaves();
-}
+  let allWaves = await waveContract.getAllWaves();
+  console.log(allWaves);
+};
 
 // catch exceptions
 const runMain = async () => { 
